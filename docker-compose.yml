@@ -43,9 +43,31 @@ services:
     depends_on:
       - zookeeper
 
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
+    environment:
+      - bootstrap.memory_lock=true
+      - discovery.type=single-node
+      - cluster.routing.allocation.disk.threshold_enabled=false
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - 9200:9200
+    networks: [ 'stack' ]
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.4.0
+    ports: [ '5601:5601' ]
+    networks: [ 'stack' ]
+    links: [ 'elasticsearch' ]
+    depends_on: [ 'elasticsearch' ]
+
 networks:
   postgres:
     driver: bridge
+
   microservice:
     name: "microservice"
     driver: bridge
@@ -58,6 +80,8 @@ networks:
           aux_addresses:
             kafka: 10.5.0.2
             zookeeper: 10.5.0.3
+
+  stack: {}
 
 volumes:
   postgres:
