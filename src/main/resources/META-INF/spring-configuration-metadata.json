@@ -1,0 +1,21 @@
+{
+  "properties": [
+    {
+      "name": "spring.projects-datasource.jdbc-url",
+      "type": "java.lang.String",
+      "sourceType": "com.microservice.configuration.processor.CustomProperties"
+    },
+    {
+      "name": "spring.projects-datasource.username",
+      "type": "java.lang.String",
+      "sourceType": "com.microservice.configuration.processor.CustomProperties",
+      "defaultValue": "postgres"
+    },
+    {
+      "name": "spring.projects-datasource.password",
+      "type": "java.lang.String",
+      "sourceType": "com.microservice.configuration.processor.CustomProperties"
+    }
+  ],
+  "hints": []
+}

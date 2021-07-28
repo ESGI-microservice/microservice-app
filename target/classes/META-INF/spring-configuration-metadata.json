@@ -1,0 +1,23 @@
+{
+  "groups": [
+    {
+      "name": "spring.projects-datasource",
+      "type": "javax.sql.DataSource",
+      "sourceType": "com.microservice.marketmanager.project.ProjectConfiguration",
+      "sourceMethod": "projectDataSource()"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.projects-datasource.driver-class-name",
+      "type": "java.lang.String",
+      "description": "Description for spring.projects-datasource.driver-class-name."
+    },
+    {
+      "name": "spring.projects-datasource.jdbc-url",
+      "type": "java.lang.String",
+      "description": "Description for spring.projects-datasource.jdbc-url."
+    }
+  ],
+  "hints": []
+}
