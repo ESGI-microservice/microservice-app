@@ -27,7 +27,7 @@ public class ProjectService {
     }
 
     public Project addProject (Project project) {
-        var optionalProject = this.projectRepository.findById(project.getProjectID());
+        var optionalProject = this.projectRepository.findByProjectID(project.getProjectID());
         if (optionalProject.isPresent()) throw new IllegalStateException("Project already existing");
 
         return this.projectRepository.save(project);

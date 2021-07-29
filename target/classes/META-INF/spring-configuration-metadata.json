@@ -1,12 +1,5 @@
 {
-  "groups": [
-    {
-      "name": "spring.projects-datasource",
-      "type": "javax.sql.DataSource",
-      "sourceType": "com.microservice.marketmanager.project.ProjectConfiguration",
-      "sourceMethod": "projectDataSource()"
-    }
-  ],
+  "groups": [],
   "properties": [
     {
       "name": "spring.projects-datasource.driver-class-name",

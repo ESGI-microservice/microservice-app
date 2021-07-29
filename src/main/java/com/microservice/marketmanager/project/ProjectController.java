@@ -2,6 +2,7 @@ package com.microservice.marketmanager.project;
 
 //import com.microservice.marketmanager.kafka.Producer;
 import com.microservice.marketmanager.kafka.Producer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,11 +16,11 @@ import java.util.List;
 public class ProjectController {
 
     private final ProjectService projectService;
-    private Producer producer;
 
-    public ProjectController(ProjectService projectService) {
-        this.projectService = projectService;
-    }
+    @Autowired
+    Producer producer;
+
+    public ProjectController(ProjectService projectService) { this.projectService = projectService; }
 
     @GetMapping
     public ResponseEntity<List<Project>> getProjects () {
@@ -34,15 +35,15 @@ public class ProjectController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Project> addProject () {//@RequestBody Project project
+    public ResponseEntity<Project> addProject (@RequestBody List<String> list) {//
         Project project = new Project("oui", "non", Date.from(Instant.now()), 2);
         Project newProject = this.projectService.addProject(project);
         return new ResponseEntity <>(newProject, HttpStatus.CREATED);
     }
 
-    @PostMapping(value = "/test")
+    @PostMapping("/test")
     public void sendMessage(@RequestParam("msg") String msg) {
-        System.out.println("POOOOOOOK");
+        System.out.println(msg);
         producer.publishToTopic(msg);
     }
 

@@ -10,17 +10,11 @@ public class Producer {
     public static final String topic = "projectTopic";
 
     @Autowired
-    private KafkaTemplate<String, Long> kafkaTemp;
+    private KafkaTemplate<String, String> kafkaTemp;
 
-    @Autowired
-    private KafkaTemplate<String, String> kafkaTemp2;
-
-    public void publishToTopic(Long id) {
-        this.kafkaTemp.send(topic, id);
-    }
 
     public void publishToTopic(String msg) {
-        this.kafkaTemp2.send(topic, msg);
+        System.out.println("pong");
+        this.kafkaTemp.send(topic, msg);
     }
 }
-

@@ -20,10 +20,10 @@ public class ProjectImplTest {
     @Transactional("productTransactionManager")
     public void projectCreationCheck () throws ParseException {
         Project project = new Project();
-        project.setProjectName("Sink leak");
+        project.setProject_name("Sink leak");
         project.setLocation("13 baker street");
-        project.setStartingDate(DateFormat.getInstance().parse("22/06/2022"));
-        project.setEstimatedDuration(2);
+        project.setStarting_date(DateFormat.getInstance().parse("22/06/2022"));
+        project.setEstimated_duration(2);
         project = projectRepository.save(project);
 
         assertNotNull(projectRepository.findByProjectID(project.getProjectID()));
